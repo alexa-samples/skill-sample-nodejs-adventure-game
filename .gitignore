@@ -1,0 +1,53 @@
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+.idea
+
+# Logs and databases
+*.log
+
+# ignore compiled files
+dest/
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.crx
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Media Files
+*.avi
+*.swf
+*.flv
+*.mpg
+*.mpe
+*.mpeg
+*.m4v
+*.mp4
+*.mp3
+*.mov
+*.webm
+*.ogg
+*.ogv
+
+# Dependancies
+dist/
+docs/
+report/
+node_modules/
+jspm_packages/
+bower_components/
+.tmp/

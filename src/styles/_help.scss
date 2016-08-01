@@ -1,0 +1,115 @@
+help {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+
+  help-modal {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    background-color: #666;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    transform: translate3d(-50%,-50%,0);
+  }
+
+  help-modal-title {
+    display: block;
+    background-color: $blue;
+    color: white;
+    padding: 10px 10px 10px 20px;
+    font-size: 24px;
+    border-radius: 10px 10px 0 0;
+
+    button {
+      float: right;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: white;
+      margin-top: -5px;
+    }
+  }
+
+  help-modal-content {
+    display: block;
+    background-color: #666;
+    background-image: linear-gradient( to bottom, #444, #333 );
+    color: #aaa;
+    height: 50vh;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 0 0 10px 10px;
+    overflow: auto;
+
+    collapsible.is-open collapsible-content {
+      padding: 0 1em 1em 1.5em;
+    }
+
+    h2, h3, h4, h5 {
+      color: white;
+      font-size: 24px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #666;
+    }
+
+    ul, ol {
+      margin: 0;
+    }
+
+    * + ul, * + ol {
+      margin-top: 1em;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    * + p {
+      margin-top: 1em;
+    }
+
+    li + li {
+      font-size: 18px;
+      margin-top: 1em;
+    }
+
+    strong {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+
+    dl {
+      margin: 10px -20px;
+    }
+
+    dl > div + div {
+      margin-top: 20px;
+    }
+
+    dt, dd, kbd {
+      display: inline-block;
+    }
+
+    dt {
+      width: 200px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    dd {
+      margin-left: 0;
+    }
+  }
+}

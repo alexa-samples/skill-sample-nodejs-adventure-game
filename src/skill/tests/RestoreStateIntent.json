@@ -1,0 +1,26 @@
+{
+  "session": {
+    "sessionId": "SessionId.9a5b667d-b144-4eb3-a08f-XXXXXXXXXXXX",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.1bab794d-61ad-4e0c-bb81-XXXXXXXXXXXX"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    },
+    "attributes": {
+      "isAskingToRestoreState": true,
+      "currentSceneId": 5,
+      "breadcrumbs": [0,1]
+    },
+    "new": false
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.337aa9c1-48ef-43cd-8bfb-XXXXXXXXXXXX",
+    "timestamp": "1984-09-14T00:00:00Z",
+    "intent": {
+      "name": "RestoreStateIntent",
+      "slots": {}
+    }
+  }
+}

@@ -1,0 +1,338 @@
+map {
+  position: relative;
+  height: 100vh;
+  padding: 50px 0;
+  overflow: auto;
+
+  > .map-container > scene {
+    > .cell {
+      width: 120px;
+      height: 120px;
+      line-height: 120px;
+      padding: 0;
+      border-radius: 50%;
+      background-color: $blue;
+      border: 2px solid white;
+      font-size: 24px;
+      font-weight: 300;
+
+      .option {
+        background-color: transparent;
+        line-height: 120px;
+        border: none;
+        color: white;
+        box-shadow: none;
+        font-size: 1em;
+
+        &:after {
+          bottom: -30px;
+          width: 0;
+          height: 30px;
+          border: 0;
+          border-right: 2px solid #666;
+          margin-left: -1px;
+        }
+      }
+
+      .title {
+        display: none;
+      }
+
+      .btn {
+        bottom: -10px;
+        background-image: none;
+        background-color: $blue;
+        border-color: white;
+        color: white;
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+
+    > .row {
+      &:before {
+        display: none;
+      }
+
+      > scene > .cell:before {
+        /* top: -52px; */
+        /* height: 50px; */
+      }
+    }
+  }
+}
+
+scene {
+  display: none;
+  display: block;
+  position: relative;
+  text-align: center;
+
+  .row {
+    justify-content: center;
+    position: relative;;
+    margin-top: 30px;
+
+    > * {
+      flex: 0 0 auto;
+      padding: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-left: 2px solid #666;
+      top: -60px;
+      left: 50%;
+      width: 0;
+      height: 60px;
+      margin-left: -1px;
+    }
+  }
+
+  .start {
+    display: block;
+    color: #666;
+    max-width: 200px;
+    padding: 10px 50px;
+    font-size: 36px;
+    border: 2px solid #666;;
+    border-radius: 25px;
+    text-shadow: 0 -1px 0 #111;
+    box-shadow: 0 -1px 0 #111;
+    margin: 0 auto 10px;
+  }
+
+  .cell {
+    display: inline-block;
+    position: relative;
+    max-width: 200px;
+    padding: 20px 0;
+    margin: 27px 10px 0;
+    z-index: 1;
+
+    h4 {
+      margin: 10px 0;
+    }
+
+    .title,
+    .option {
+      display: block;
+      position: relative;
+      background-color: rgba(0,0,0,0.25);
+      color: white;
+      padding: 0 20px;
+      border: 2px solid #666;
+      font-size: 14px;
+      font-weight: 300;
+      font-family: Gill sans;
+      text-transform: uppercase;
+      text-shadow: none;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+
+    .option {
+      position: relative;
+      line-height: 1em;
+      border-radius: 1em;
+      padding: 5px 10px;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: -20px;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-top-color: #666;
+        margin-left: -10px;
+      }
+    }
+
+    .title {
+      padding: 10px;
+      padding: 20px;
+      border-radius: 2em;
+      margin-top: 15px;
+    }
+
+    .btn-remove {
+      position: absolute;
+      left: 50%;
+      top: -14px;
+      margin-left: -14px;
+      z-index: 1;
+    }
+
+    .btn-add {
+      position: absolute;
+      bottom: 8px;
+      margin-left: -14px;
+      z-index: 1;
+    }
+
+    &.red {
+      border-color: $red;
+      .title {
+        color: $red;
+        border-color: $red;
+      }
+      .btn-add {
+        border-color: $red;
+        color: $red;
+      }
+    }
+
+    &.green {
+      border-color: $green;
+      .title {
+        color: $green;
+        border-color: $green;
+      }
+      .btn-add {
+        border-color: $green;
+        color: $green;
+      }
+    }
+
+    &.blue {
+      border-color: $blue;
+      .title {
+        color: $blue;
+        border-color: $blue;
+      }
+      .btn-add {
+        border-color: $blue;
+        color: $blue;
+      }
+    }
+
+    &.yellow {
+      border-color: $yellow;
+      .title {
+        color: $yellow;
+        border-color: $yellow;
+      }
+      .btn-add {
+        border-color: $yellow;
+        color: $yellow;
+      }
+    }
+
+    &.is-hidden {
+      .title {
+        border-style: dashed;
+      }
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-left: 2px solid #666;
+      left: 50%;
+      top: -27px;
+      width: 0;
+      height: 25px;
+      margin-left: -1px;
+    }
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-top: 2px solid #666;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+  }
+
+  &:first-child:before,
+  &:last-child:before {
+    width: 50%;
+  }
+
+  &:first-child:before {
+    left: auto;
+    right: 0;
+  }
+
+  &:last-child:before {
+    left: 0;
+  }
+
+  &:first-child:last-child:before {
+    width: 0;
+  }
+
+  > .cell:hover {
+    &.default .btn-add {
+      border-color: white;
+      color: white;
+    }
+    .btn-remove {
+      border-color: white;
+      color: white;
+    }
+  }
+
+  > .cell:hover,
+  &.is-selected > .cell {
+    .option {
+      background-color: rgba( white, 0.1 );
+      border-color: white;
+
+      &:after {
+        border-top-color: white;
+      }
+    }
+
+    &.default .title {
+      border-color: white;
+      background-color: rgba( white, 0.1 );
+    }
+
+    &.red .title {
+      background-color: rgba( $red, 0.1 );
+    }
+
+    &.green .title {
+      background-color: rgba( $green, 0.1 );
+    }
+
+    &.blue .title {
+      background-color: rgba( $blue, 0.1 );
+    }
+
+    &.yellow .title {
+      background-color: rgba( $yellow, 0.1 );
+    }
+  }
+
+  &.is-selected > .cell {
+    .option {
+      background-color: $blue;
+      animation: pulse 1000ms infinite;
+    }
+  }
+
+  @keyframes pulse {
+    from {
+      transform: translate3d(0,0,0);
+    }
+    25% {
+      transform: translate3d(0,5px,0);
+    }
+    to {
+      transform: translate3d(0,0,0);
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "applicationId": null,
+  "awsProfileName": "",
+  "skillName": "My Alexa Skill",
+  "lambdaName": "MyAlexaSkillLambdaFunction",
+  "dynamoTableName": "MyAlexaSkillTable",
+  "dynamoRegion": "us-east-1",
+  "commands": {
+    "ResetStateIntent": [
+      "reset skill",
+      "start again",
+      "reset"
+    ],
+    "RestoreStateIntent": [
+      "resume skill",
+      "resume"
+    ],
+    "RepeatOptionsIntent": [
+      "repeat options"
+    ],
+    "RepeatSceneIntent": [
+      "repeat scene",
+      "repeat"
+    ],
+    "GoBackIntent": [
+      "go back"
+    ],
+    "AMAZON.HelpIntent": [
+      "help"
+    ],
+    "AMAZON.StopIntent": [
+      "exit skill"
+    ],
+    "AMAZON.CancelIntent": [
+      "exit skill"
+    ]
+  },
+  "responses": {
+    "askToRestoreState": {
+      "color": "default",
+      "isHidden": false,
+      "generateOptions": false,
+      "readPreviousOptions": false,
+      "card": {
+        "title": "Restore Progress",
+        "text": "I have found your previous saved progress.",
+        "prompt": "",
+        "image": {
+          "largeImageUrl": null,
+          "smallImageUrl": null
+        }
+      },
+      "voice": {
+        "intro": "I have found your previous saved progress.",
+        "prompt": "To continue from where you left off, say \"Resume Skill\". Otherwise, say \"Reset Skill\"."
+      }
+    },
+    "unrecognized": {
+      "color": "default",
+      "isHidden": false,
+      "generateOptions": true,
+      "readPreviousOptions": false,
+      "card": {
+        "title": "Unrecognized command",
+        "text": "Please repeat your command.",
+        "prompt": "",
+        "image": {
+          "largeImageUrl": null,
+          "smallImageUrl": null
+        }
+      },
+      "voice": {
+        "intro": "My apologies, please repeat your command.",
+        "prompt": ""
+      }
+    },
+    "help": {
+      "color": "default",
+      "isHidden": false,
+      "generateOptions": false,
+      "readPreviousOptions": false,
+      "card": {
+        "title": "Help",
+        "text": "I understand you need some help. At any time you can issue the following commands. To hear your options again, say \"repeat options.\" To hear the entire scene again, say \"repeat scene.\" In order to revisit the previous scene, say \"go back.\" To skip past the current scene description, say \"skip.\" To start the game over, say \"start again.\" At any time, to hear these commands again, say \"help\".",
+        "prompt": "",
+        "image": {
+          "largeImageUrl": null,
+          "smallImageUrl": null
+        }
+      },
+      "voice": {
+        "intro": "I understand you need some help. At any time you can issue the following commands. To hear your options again, say \"repeat options.\" To hear the entire scene again, say \"repeat scene.\" In order to revisit the previous scene, say \"go back.\" To skip past the current scene description, say \"skip.\" To start the game over, say \"start again.\" At any time, to hear these commands again, say \"help\".",
+        "prompt": "Now, what would you like to do?"
+      }
+    },
+    "exit": {
+      "color": "default",
+      "isHidden": false,
+      "generateOptions": false,
+      "readPreviousOptions": false,
+      "card": {
+        "title": "Good bye",
+        "text": "Thank you for using My Alexa Skill.",
+        "prompt": "",
+        "image": {
+          "largeImageUrl": null,
+          "smallImageUrl": null
+        }
+      },
+      "voice": {
+        "intro": "Thank you for using My Alexa Skill.",
+        "prompt": "Goodbye."
+      }
+    }
+  },
+  "undefined": "My Alexa Skill"
+}

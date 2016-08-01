@@ -1,0 +1,193 @@
+panel {
+  position: relative;
+  background-color: #333;
+  height: 100vh;
+  padding: 75px 20px 5px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 666;
+
+  * + collapsible {
+    margin-top: 2.5px;
+  }
+
+  h2 {
+    padding-left: 5px;
+    margin-bottom: 10px;
+
+    strong {
+      font-weight: 100;
+    }
+
+    em {
+      font-style: normal;
+    }
+  }
+
+  h2 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    em {
+      color: lighten( $blue, 20% );
+    }
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  * + img {
+    margin-top: 10px;
+  }
+
+  label {
+    padding-top: 0;
+    font-size: 0.8em;
+    font-weight: 100;
+    color: #ddd;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    legend {
+      font-size: 1.5em;
+      padding-top: 20px;
+    }
+
+    > label:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  ul,
+  ul.list-unstyled {
+    margin-left: 8px;
+
+    a {
+      display: block;
+      line-height: 1.5em;
+      color: #999;
+      font-size: 18px;
+      font-weight: 100;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .row > & {
+    flex: 0 0 400px;
+    overflow: auto;
+  }
+
+  .input-row {
+    label {
+      small {
+        color: $blue;
+      }
+    }
+    &:hover {
+      select,
+      textarea,
+      input[type=url],
+      input[type=text],
+      input[type=date],
+      input[type=time],
+      input[type=number] {
+        border-color: white;
+      }
+    }
+  }
+
+  * + .input-row {
+    padding-top: 10px;
+    border-top: 1px solid #666;
+    margin-top: 1.5px;
+  }
+
+  .input-row + .input-row {
+    border-top: 0;
+  }
+
+  .button-set {
+    margin: 10px 0;
+  }
+
+  .error {
+    color: brown;
+    margin: 10px 0;
+    text-align: right;
+  }
+
+  .action {
+    background-image: linear-gradient(to bottom, #555, #3c3c3c);
+    padding: 10px;
+    border: 1px solid #111;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+    .action-method {
+      color: lime;
+    }
+  }
+
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 20px;
+
+    .tab {
+      flex: 1;
+      position: relative;
+
+      input {
+        position: absolute;
+        left: -100vw;
+      }
+
+      label {
+        display: block;
+        position: relative;
+        background: linear-gradient( to top, rgba(0,0,0,0.2), transparent 50% );
+        padding: 5px 20px 15px 20px;
+        margin: 0;
+        border-bottom: 1px solid #666;
+        border-radius: 6px 6px 0 0;
+        font-size: 15px;
+        cursor: pointer;
+
+        &:hover {
+          color: #aaa;
+        }
+      }
+
+      input:checked + label {
+        color: white;
+        border: 1px solid #666;
+        border-bottom-color: #333;
+        padding: 10px 20px 5px 20px;
+        font-size: 20px;
+        background-image: linear-gradient( to bottom, #3f3f3f, transparent );
+        box-shadow: 0 -3px 5px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  .tab-content {
+    margin-bottom: 20px;
+  }
+}

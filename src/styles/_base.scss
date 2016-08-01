@@ -1,0 +1,321 @@
+$default: #666;
+$red: lighten( red, 20% );
+$green: lighten( lime, 20% );
+$blue: #009ad4;
+$yellow: lighten( yellow, 20% );
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  outline: none;
+}
+
+html, body {
+  padding: 0;
+  background-image: linear-gradient( to bottom, #444, #333 );
+  color: #aaa;
+  min-height: 100vh;
+  margin: 0;
+  text-shadow: 0 -1px 0 black;
+  font-size: 16px;
+
+  font-family: Helvetica, "Helvetica Nueue", arial;
+}
+
+html {
+  background-color: #333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0 0 20px;
+  font-weight: 100;
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+label {
+  display: block;
+  color: #777;
+  line-height: 1em;
+  padding: 0 5px;
+
+  &.inline {
+    display: inline-block;
+  }
+}
+
+select,
+textarea,
+input[type=url],
+input[type=text],
+input[type=date],
+input[type=time],
+input[type=number] {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  color: #999;
+  height: 1.75em;
+  line-height: 1.75em;
+  padding: 0 5px;
+  border: none;
+  border-bottom: 1px solid #666;
+  border-radius: 0;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: monospace;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+  }
+}
+
+select {
+  height: 2em;
+  line-height: 1em;
+  padding: 0.5em 5px;
+  border-radius: 0;
+  -webkit-appearance: initial;
+}
+
+input {
+  &.input-hidden {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+textarea {
+  height: 1.75em;
+  line-height: 1.25em;
+  padding: 0.25em 5px !important;
+  padding: 0;
+  overflow: auto;
+  font-size: 18px;
+
+  &.code {
+    height: 250px;
+    line-height: 1.2em;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: scroll;
+
+    .json {
+
+    }
+  }
+}
+
+kbd {
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  background-image: linear-gradient(to bottom, #555, #3c3c3c);
+  color: white;
+  border: 1px solid #222;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+  text-align: center;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.display-none {
+  display: none;
+}
+
+ul.list-unstyled,
+ol.list-unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.code {
+  margin-bottom: 1em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    flex: 1;
+    margin: 0;
+  }
+}
+
+.input-group {
+  @extend .row;
+
+  margin-top: 10px;
+
+  label {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  input,
+  select {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  button:last-child {
+    flex: 0 0 auto;
+  }
+
+  label:first-child {
+    text-align: right;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.flex-autosize {
+  flex: 0 0 auto;
+}
+
+.input-toggle {
+  @extend .row;
+
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+
+  input {
+    position: absolute;
+    left: -100vw;
+  }
+
+  label {
+    font-size: 16px;
+  }
+}
+
+.input-radio {
+  display: inline;
+  overflow: hidden;
+
+  input {
+    position: absolute;
+    left: -100vw;
+    visibility: hidden;
+  }
+
+  span {
+    font-size: 18px;
+  }
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  &.default {
+    background-color: $default;
+  }
+  &.red {
+    background-color: $red;
+  }
+  &.green {
+    background-color: $green;
+  }
+  &.blue {
+    background-color: $blue;
+  }
+  &.yellow {
+    background-color: $yellow;
+  }
+}
+
+.hotspot {
+  background-color: $blue;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  opacity: 0.5;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.notice {
+  background-color: $blue;
+  color: white;
+  padding: 15px;
+  line-height: 1.5em;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 100;
+  text-shadow: none;
+
+  &:hover {
+    display: block;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  * + p {
+    margin-top: 2em;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}

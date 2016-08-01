@@ -1,0 +1,55 @@
+app-nav {
+  display: flex;
+  position: fixed;
+  background-color: $blue;
+  top: 0;
+  right: 0;
+  width: 400px;
+  padding: 0 10px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 5px solid darken( $blue, 15% );
+  justify-content: space-between;
+  z-index: 9;
+
+  > * {
+    align-self: center;
+    flex: flex-shrink;
+  }
+
+  button {
+    i {
+      color: white;
+    }
+
+    &:hover {
+      transform: translateY(1px);
+    }
+  }
+
+  h1 {
+    color: white;
+    flex: flex-grow;
+    line-height: 45px;
+    padding: 5px 0;
+    margin-bottom: 0;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    background: transparent;
+    height: 100%;
+    margin: 0 2.5px;
+    border: none;
+    font-size: 18px;
+    color: #999;
+
+    &:first-child {
+      float: left;
+    }
+  }
+}

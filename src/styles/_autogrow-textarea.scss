@@ -1,0 +1,26 @@
+autogrow-textarea {
+  position: relative;
+  display: block;
+
+  textarea {
+    overflow: hidden;
+    resize: none;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 10px solid #666;
+    border-top: 10px solid transparent;
+  }
+
+  &:hover:after,
+  .input-row:hover &:after {
+    border-right-color: white;
+  }
+}
