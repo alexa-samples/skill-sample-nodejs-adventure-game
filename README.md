@@ -2,7 +2,7 @@
 
 This tool provides an easy to use front-end that allows developers to instantly deploy code for your story, or use the generated code as a starting point for more complex projects. It was written in Node.js by Thomas Yuill, a designer and engineer in the Amazon Advertising team.
 
-![alt text](https://cloud.githubusercontent.com/assets/7671574/17309586/6e6cb98c-57f4-11e6-8d3c-f9c8d8ad24ab.png "Interactive Adventure Game Tool Screenshot")
+![alt text](https://cloud.githubusercontent.com/assets/7671574/17309622/a574be7a-57f4-11e6-9ea8-a52f20424bc5.png "Interactive Adventure Game Tool Screenshot")
 
 ##  How to Get Started
 
