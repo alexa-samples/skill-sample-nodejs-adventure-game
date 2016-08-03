@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "./node_modules/jspm/jspm.js install",
-    "start": "./node_modules/gulp/bin/gulp.js"
+    "postinstall": "node node_modules/jspm/jspm.js install",
+    "start": "node node_modules/gulp/bin/gulp.js"
   },
   "author": "Thomas Yuill",
   "license": "ISC",
