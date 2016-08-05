@@ -14,15 +14,18 @@ To get started with the included sample project, you'll need to setup a few pre
 * The skill uses a table in AWS DynamoDB to save the user's progress between sessions.  
 * You can then register your skill with Alexa using the Amazon Developer website, linking it to your AWS resources.
 
-You can change the name of these resources to whatever you like later, but for now, setup the following items:
+Set these up with these step-by-step instructions:
 
 1. Create or login to an AWS account. In the AWS Console:
-  1. Create an AWS role with full access to Lambda and DynamoDB.
-  1. Create an AWS Lambda function named MyAlexaSkillLambdaFunction being sure to select the role created above and configuring "Alexa Skills Kit" as the "Event Source".  Take note of the ARN on the upper right, which you'll configure in the Developer Console later.
+  1. Create an AWS Role in IAM with access to Lambda and DynamoDB.
   
-     ![alt text](https://cloud.githubusercontent.com/assets/7671574/17307511/66788fda-57ea-11e6-909a-903ef4194b19.png "AWS Lambda Role Screenshot")
+     ![create_role_1](https://cloud.githubusercontent.com/assets/7671574/17451098/09f64f40-5b19-11e6-82ee-b82c98387052.png "AWS Create Role Screenshot 1")
+     ![create_role_2](https://cloud.githubusercontent.com/assets/7671574/17451100/0c3ef928-5b19-11e6-9aca-8cd353106396.png "AWS Create Role Screenshot 2")
+     ![create_role_3](https://cloud.githubusercontent.com/assets/7671574/17451101/0e3c5ff4-5b19-11e6-90f6-0210dae6f9dc.png "AWS Create Role Screenshot 3")
 
-     ![alt text](https://cloud.githubusercontent.com/assets/7671574/17307542/8735226a-57ea-11e6-973a-673aa754ee8a.png "AWS Lambda Event Source Screenshot")
+  1. Create an AWS Lambda function named MyAlexaSkillLambdaFunction being sure to select "Alexa Skills Kit" as the trigger and using the role created above.  Take note of the ARN on the upper right, which you'll configure in the Developer Console later.
+  
+     ![alt text](https://cloud.githubusercontent.com/assets/7671574/17451088/ff126618-5b18-11e6-8f46-fbfb9461ab80.png "AWS Lambda Create Trigger Screenshot")
 
   1. Create an AWS DynamoDB table named MyAlexaSkillTable with the case sensitive primary key "userId".
 
