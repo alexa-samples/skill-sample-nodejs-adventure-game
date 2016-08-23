@@ -67,8 +67,13 @@ AlexaSkill.prototype.execute = function ( event, context ) {
             + this._appId)
         throw "Invalid applicationId"
     }
+
+    //TODO: allow default attributes.flags to be loaded from json file which is written when the global attributes.flags list is set
+
     if (!event.session.attributes) {
-        event.session.attributes = {}
+        event.session.attributes = {
+          flags: {}
+        }
     }
     if (event.session.new) {
         this.eventHandlers.onSessionStarted(event.request, event.session)

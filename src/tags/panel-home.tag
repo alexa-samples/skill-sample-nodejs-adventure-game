@@ -18,7 +18,7 @@
     </div>
   </div>-->
 
-  <!-- TODO: add view support for additional global commands such as 'inventory' and 'drop item'-->
+  <!-- TODO: add support for a global list of session.attributes keys -->
 
   <collapsible title="Global Commands Utterances">
     <div class="input-row"
