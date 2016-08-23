@@ -99,41 +99,68 @@
     }
 
     this.onClickAddOption = e => {
+
+      //TODO: add support for showing UI to prompt user to select if they are adding a link to a scene or an item first
+
       e.stopPropagation()
+
+      var selection = prompt("What type do you want to add? Options are: scene / item", "scene");
+
       var parentSceneId = opts.scene ? opts.scene.id : 0
-      var sceneId = 0; while ( opts.scenes.find( scene => scene.id === sceneId ) ) { sceneId++ }
       var parentScene = opts.scenes.find( scene => scene.id === Number( parentSceneId ) )
 
-      var option = {
-        sceneId,
-        utterances: [
-          'open door'
-        ]
-      }
+      console.log(selection);
 
-      var scene = {
-        id: sceneId,
-        color: 'default',
-        isHidden: false,
-        generateOptions: true,
-        readPreviousOptions: false,
-        card: {
-          title: 'Room',
-          text: 'You enter a room.',
-          image: {
-            smallImageUrl: null,
-            largeImageUrl: null
-          }
-        },
-        voice: {
-          intro: 'You enter a room. What would you like to do?',
-          prompt: ''
-        },
-        options: []
-      }
+      if(selection === 'item'){
 
-      parentScene.options.push( option )
-      opts.scenes.push( scene )
+        var itemId = prompt("Enter the ID of the item you want to add", "42");
+
+        var option = {
+          itemId,
+          utterances: [
+            'take item'
+          ]
+        }
+
+        parentScene.options.push( option )
+
+      }else{
+
+
+        var sceneId = 0; while ( opts.scenes.find( scene => scene.id === sceneId ) ) { sceneId++ }
+
+
+        var option = {
+          sceneId,
+          utterances: [
+            'open door'
+          ]
+        }
+
+        var scene = {
+          id: sceneId,
+          color: 'default',
+          isHidden: false,
+          generateOptions: true,
+          readPreviousOptions: false,
+          card: {
+            title: 'Room',
+            text: 'You enter a room.',
+            image: {
+              smallImageUrl: null,
+              largeImageUrl: null
+            }
+          },
+          voice: {
+            intro: 'You enter a room. What would you like to do?',
+            prompt: ''
+          },
+          options: []
+        }
+
+        parentScene.options.push( option )
+        opts.scenes.push( scene )
+      }
 
       riot.route('/scene:' + parentScene.id + '/option:' + ( parentScene.options.length -1 ) )
     }
