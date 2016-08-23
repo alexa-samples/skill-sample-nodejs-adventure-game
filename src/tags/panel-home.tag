@@ -18,6 +18,8 @@
     </div>
   </div>-->
 
+  <!-- TODO: add view support for additional global commands such as 'inventory' and 'drop item'-->
+
   <collapsible title="Global Commands Utterances">
     <div class="input-row"
          each={ parent.commands }>

@@ -16,6 +16,8 @@ import toggleNoticeMixin from "../tags/mixins/toggleNotice"
 import config from "../skill/models/config.json!"
 import scenes from "../skill/models/scenes.json!"
 
+//TODO: add ability to import items from "../skill/models/items.json!"
+
 riot.mixin('toggleNotice', toggleNoticeMixin )
 
 riot.mount('map', { config, scenes })

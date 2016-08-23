@@ -77,6 +77,54 @@ function buildPrompt ( scene, isForSpeech ) {
 
   if ( scene.voice.prompt ) return scene.voice.prompt.trim()
 
+  //TODO: add support for returning utterances of the option items in the scene along with the list of other scenes the
+  //player can travel to.
+  //need to add a new property to the options objects to define if it is a scene or item. Items should reference itemId
+  //item options should also have the isHidden property to define if they are invisible in the scene description
+
+  /*
+
+   "options": [
+   {
+      "utterances": [
+        "open door 1"
+      ],
+      "sceneId": 2
+   },
+   {
+      "utterances": [
+        "open door 2"
+      ],
+      "sceneId": 3
+   },
+   {
+      "utterances": [
+        "open door 3"
+      ],
+      "sceneId": 4
+      },
+   {
+      "utterances": [
+        "open door 4"
+      ],
+      "sceneId": 5
+   },
+   {
+      "utterances": [
+        "pick up red key"
+      ],
+      "itemId": 1
+   },
+   {
+      "utterances": [
+        "pick up blue key"
+      ],
+      "itemId": 2
+   }]
+
+
+   */
+
   var options = scene.options.filter( function ( option ) {
     return ! utils.findResponseBySceneId( option.sceneId ).isHidden
   }).map( function ( option ) {

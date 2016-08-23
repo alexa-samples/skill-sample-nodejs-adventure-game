@@ -9,6 +9,8 @@
   <collapsible title="Advanced"
                id="$collapsibleSceneAdvanced">
 
+    <!-- TODO: add UI for selecting items from a list to be added to the scene (should be a searchable autofill dropdown list) -->
+
     <div class="input-row">
       <label for="$inputIsHidden">
         Hidden Scene
@@ -391,6 +393,10 @@
                                          $advanced.$inputColorGreen,
                                          $advanced.$inputColorRed,
                                          $advanced.$inputColorYellow ].find( x => x.checked )
+
+      //TODO: add support for saving selected item into scene as an item reference. also handle if item is changed / removed
+      //follow the format of this.onClickDestroyOption() in scene.tag to see how to update the scene options to save the
+      //item reference
 
       this.scene.color               = $colorSelection ? $colorSelection.value : 'default'
       this.scene.isHidden            = ( $advanced.$inputIsHiddenTrue.checked )
