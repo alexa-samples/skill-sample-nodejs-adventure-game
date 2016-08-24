@@ -38,6 +38,11 @@ var defaultIntentHandlers = {
         previousScene.options.splice( index , 1 ) // remove current option
         scene.options = previousScene.options
       }
+
+      if(!utils.checkEntryConditionString(scene.entryConditions,session)){
+        respond.readSceneWithCard( utils.getRejectScene(scene), session, response );
+        return;
+      }
     }
     respond.readSceneWithCard( scene, session, response )
   },

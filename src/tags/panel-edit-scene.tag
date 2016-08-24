@@ -567,6 +567,8 @@
 
   <script type="es6">
 
+    //TODO: add support for alternate scene description text if scene flags have already been set
+
     this.title = null
     this.scene = null
     this.currentTab = null

@@ -56,13 +56,8 @@ function processUtterance ( intent, session, request, response, utterance ) {
     //check entry conditions for next scene to make sure user can actually enter
     if(nextScene.entryConditions && nextScene.entryConditions !== ''){
 
-      if(utils.checkEntryConditionString(nextScene.entryConditions,session)){
-
-        //set the card and voice to be the rejected one
-        currentScene.card = currentScene.rejectCard;
-        currentScene.voice = currentScene.rejectVoice;
-
-        respond.readSceneWithCard( currentScene, session, response )
+      if(!utils.checkEntryConditionString(nextScene.entryConditions,session)){
+        respond.readSceneWithCard( utils.getRejectScene(nextScene), session, response );
       }
     }
 

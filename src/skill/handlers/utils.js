@@ -10,6 +10,11 @@ var utils = {
     var conditions = inputString.split("\n");
     var conditionString = '';
 
+    //skip check if flags are empty
+    if(session.attributes.flags.length === 0){
+      return false;
+    }
+
     for(var i = 0; i < conditions.length; i++){
       var condition = conditions[i];
       var conditionArray = condition.split('=');
@@ -43,6 +48,8 @@ var utils = {
           break;
       }
     }
+
+
 
     return eval(conditionString);
   },
@@ -83,6 +90,20 @@ var utils = {
   findPreviousScene: function ( session ) {
     var sceneId = session.attributes.breadcrumbs[ session.attributes.breadcrumbs.length -1 ]
     return utils.findResponseBySceneId( sceneId )
+  },
+
+  cloneScene: function( scene ) {
+    return cloneScene(scene);
+  },
+
+  getRejectScene: function( scene ) {
+    var rejectScene = scene;//utils.cloneScene(scene);
+
+    //set the card and voice to be the rejected one
+    rejectScene.card = rejectScene.rejectCard;
+    rejectScene.voice = rejectScene.rejectVoice;
+
+    return rejectScene;
   }
 
 }
