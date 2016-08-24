@@ -40,6 +40,31 @@ function processUtterance ( intent, session, request, response, utterance ) {
     var nextScene = utils.findNextScene( currentScene, option );
     session.attributes.breadcrumbs.push( currentScene.id )
     session.attributes.currentSceneId = nextScene.id
+
+    //set session flags on exit if the current scene specifies their values
+    if(currentScene.setSessionFlagsOnExit && currentScene.setSessionFlagsOnExit !== ''){
+      var flags = currentScene.setSessionFlagsOnExit.split("\n");
+      flags.forEach(function(flag){
+        var flagArray = flag.split('=');
+        var flagKey = flagArray[0];
+        var flagValue = flagArray[1];
+
+        session.attributes.flags[flagKey] = flagValue;
+      });
+    }
+
+    //set session flags on enter if the next scene specifies their values
+    if(nextScene.setSessionFlagsOnEnter && nextScene.setSessionFlagsOnEnter !== ''){
+      var flags = nextScene.setSessionFlagsOnEnter.split("\n");
+      flags.forEach(function(flag){
+        var flagArray = flag.split('=');
+        var flagKey = flagArray[0];
+        var flagValue = flagArray[1];
+
+        session.attributes.flags[flagKey] = flagValue;
+      });
+    }
+
     respond.readSceneWithCard( nextScene, session, response )
   }
 

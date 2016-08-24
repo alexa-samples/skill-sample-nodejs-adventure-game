@@ -28,7 +28,8 @@ function putUserState ( session, cb ) {
     "Item": {
       "userId": session.user.userId,
       "breadcrumbs": session.attributes.breadcrumbs,
-      "currentSceneId": session.attributes.currentSceneId
+      "currentSceneId": session.attributes.currentSceneId,
+      "flags": session.attributes.flags
     }
   }
 
@@ -46,7 +47,8 @@ function getUserState ( session, cb ) {
     },
     "AttributesToGet": [
       "currentSceneId",
-      "breadcrumbs"
+      "breadcrumbs",
+      "flags"
     ],
   }
 
