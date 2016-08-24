@@ -53,6 +53,19 @@ function processUtterance ( intent, session, request, response, utterance ) {
       });
     }
 
+    //check entry conditions for next scene to make sure user can actually enter
+    if(nextScene.entryConditions && nextScene.entryConditions !== ''){
+
+      if(utils.checkEntryConditionString(nextScene.entryConditions,session)){
+
+        //set the card and voice to be the rejected one
+        currentScene.card = currentScene.rejectCard;
+        currentScene.voice = currentScene.rejectVoice;
+
+        respond.readSceneWithCard( currentScene, session, response )
+      }
+    }
+
     //set session flags on enter if the next scene specifies their values
     if(nextScene.setSessionFlagsOnEnter && nextScene.setSessionFlagsOnEnter !== ''){
       var flags = nextScene.setSessionFlagsOnEnter.split("\n");

@@ -5,6 +5,48 @@ var scenes = require('../models/scenes.json')
 
 var utils = {
 
+  checkEntryConditionString: function(inputString,session) {
+
+    var conditions = inputString.split("\n");
+    var conditionString = '';
+
+    for(var i = 0; i < conditions.length; i++){
+      var condition = conditions[i];
+      var conditionArray = condition.split('=');
+      var conditionKey = conditionArray[0];
+
+      switch(conditionKey){
+        case 'AND':
+          //is logical AND
+          conditionString += ' && ';
+          break;
+        case 'OR':
+          //is logical OR
+          conditionString += ' || ';
+          break;
+        case 'NOT':
+          //is logical NOT
+          conditionString += '!';
+          break;
+        case 'GROUPSTART':
+          //is (
+          conditionString +='(';
+          break;
+        case 'GROUPEND':
+          //is (
+          conditionString +=')';
+          break;
+        default:
+          //is regular condition
+          var conditionValue = conditionArray[1];
+          conditionString += 'session.attributes.flags[\''+conditionKey+'\'] === \''+conditionValue+'\'';
+          break;
+      }
+    }
+
+    return eval(conditionString);
+  },
+
   getSkillName: function () {
     return config.skillName
   },
