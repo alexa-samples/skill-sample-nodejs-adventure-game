@@ -100,6 +100,8 @@ this.onClickAddOption = function (e) {
     isHidden: false,
     generateOptions: true,
     readPreviousOptions: false,
+    setSessionFlagsOnEnter: '',
+    setSessionFlagsOnExit: '',
     card: {
       title: 'Room',
       text: 'You enter a room.',

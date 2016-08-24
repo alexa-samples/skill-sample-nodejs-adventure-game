@@ -126,6 +126,28 @@
       </div>
     </div>
 
+    <!-- TODO: figure out why save() is not being called on blur, but this works for all other fields -->
+
+    <div class="input-row">
+      <label for="$setSessionFlagsOnEnter">
+        Set session flags on enter
+      </label>
+      <autogrow-textarea
+        id="$setSessionFlagsOnEnter"
+        onblur={ parent.save }
+        value={ parent.scene.setSessionFlagsOnEnter }></autogrow-textarea>
+    </div>
+
+    <div class="input-row">
+      <label for="$setSessionFlagsOnExit">
+        Set session flags on exit
+      </label>
+      <autogrow-textarea
+        id="$setSessionFlagsOnExit"
+        onblur={ parent.save }
+        value={ parent.scene.setSessionFlagsOnExit }></autogrow-textarea>
+    </div>
+
   </collapsible>
 
   <div class="tabs">
@@ -396,9 +418,10 @@
                                          $advanced.$inputColorRed,
                                          $advanced.$inputColorYellow ].find( x => x.checked )
 
-      //TODO: add support for saving selected item into scene as an item reference. also handle if item is changed / removed
-      //follow the format of this.onClickDestroyOption() in scene.tag to see how to update the scene options to save the
-      //item reference
+      this.scene.setSessionFlagsOnEnter = $advanced.$setSessionFlagsOnEnter.value || '';
+      this.scene.setSessionFlagsOnExit  = $advanced.$setSessionFlagsOnExit.value || '';
+
+      console.log('sessionFlagValue',this.scene.setSessionFlagsOnEnter);
 
       this.scene.color               = $colorSelection ? $colorSelection.value : 'default'
       this.scene.isHidden            = ( $advanced.$inputIsHiddenTrue.checked )

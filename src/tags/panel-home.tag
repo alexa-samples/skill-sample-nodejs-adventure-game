@@ -18,8 +18,6 @@
     </div>
   </div>-->
 
-  <!-- TODO: add support for a global list of session.attributes keys -->
-
   <collapsible title="Global Commands Utterances">
     <div class="input-row"
          each={ parent.commands }>
