@@ -11,8 +11,6 @@
 
     <!-- TODO: add UI for selecting alternate scene description if specific session.attributes.flags property is set to TRUE -->
 
-    <!-- TODO: add UI to specify a session.attributes.flag to be set to TRUE when scene is entered (happens after the alternate scene description logic -->
-
     <div class="input-row">
       <label for="$inputIsHidden">
         Hidden Scene

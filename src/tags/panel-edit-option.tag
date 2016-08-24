@@ -41,10 +41,6 @@
      <i class="fa fa-info fa-lg"></i>
    </a>
 
-  <!-- TODO: add UI for checking access to linked sceneID if specific session.attributes.flags property is set to TRUE -->
-
-  <!-- TODO: add UI for rejection message if one or more session.attributes.flags property is set to FALSE -->
-
    <div id="optionNotice" class="notice display-none">
      <p>
        <strong>Command Utterances</strong>:<br>
