@@ -50,7 +50,9 @@ module.exports = utils
 function cloneScene ( scene ) {
   var scene   = Object.assign( {}, scene )
   scene.card  = Object.assign( {}, scene.card )
+  scene.rejectCard  = Object.assign( {}, scene.rejectCard )
   scene.voice = Object.assign( {}, scene.voice )
+  scene.rejectVoice = Object.assign( {}, scene.rejectVoice )
   if ( 'options' in scene ) scene.options = scene.options.slice()
   return scene
 }

@@ -119,6 +119,7 @@
         readPreviousOptions: false,
         setSessionFlagsOnEnter: '',
         setSessionFlagsOnExit: '',
+        entryConditions: '',
         card: {
           title: 'Room',
           text: 'You enter a room.',
@@ -127,8 +128,20 @@
             largeImageUrl: null
           }
         },
+        rejectCard: {
+          title: '',
+          text: '',
+          image: {
+            smallImageUrl: null,
+            largeImageUrl: null
+          }
+        },
         voice: {
           intro: 'You enter a room. What would you like to do?',
+          prompt: ''
+        },
+        rejectVoice: {
+          intro: '',
           prompt: ''
         },
         options: []
