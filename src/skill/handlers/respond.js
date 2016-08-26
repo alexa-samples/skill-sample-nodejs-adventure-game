@@ -2,11 +2,12 @@
 
 var AlexaSkill = require('../AlexaSkill')
 var dynamo = require('./dynamoDB')
+var utils = require('./utils')
 
 module.exports = {
 
   readSceneWithCard: function ( scene, session, response ) {
-    var json = buildResponse( scene )
+    var json = buildResponse( scene, session )
     dynamo.putUserState( session, function ( data ) {
       console.log( data.message )
       response.askWithCard(
@@ -20,7 +21,7 @@ module.exports = {
   },
 
   exitWithCard: function ( scene, session, response ) {
-    var json = buildResponse( scene )
+    var json = buildResponse( scene, session )
     dynamo.putUserState( session, function ( data ) {
       console.log( data.message )
       response.tellWithCard(
@@ -34,10 +35,10 @@ module.exports = {
 
 }
 
-function buildResponse ( scene ){
+function buildResponse ( scene, session ){
 
-  var voicePrompt = scene.voice.prompt.trim() || buildPrompt( scene, true )
-  var cardPrompt  = scene.card.prompt.trim()  || buildPrompt( scene, false )
+  var voicePrompt = scene.voice.prompt.trim() || buildPrompt( scene, true, session )
+  var cardPrompt  = scene.card.prompt.trim()  || buildPrompt( scene, false, session )
 
   return {
 
@@ -71,14 +72,18 @@ function buildResponse ( scene ){
 
 }
 
-function buildPrompt ( scene, isForSpeech ) {
+function buildPrompt ( scene, isForSpeech, session ) {
   var utils = require('./utils')
   var options = []
 
   if ( scene.voice.prompt ) return scene.voice.prompt.trim()
 
   var options = scene.options.filter( function ( option ) {
-    return ! utils.findResponseBySceneId( option.sceneId ).isHidden
+
+    var filteredScene = utils.findResponseBySceneId( option.sceneId );
+
+    //check entry conditions for scene to filter to see if it can be shown if the entry conditions are met, regardless if its hidden or not
+    return (!filteredScene.isHidden || (filteredScene.isHidden && filteredScene.entryConditions && filteredScene.entryConditions !== '' && utils.checkConditionString(filteredScene.entryConditions,session)));
   }).map( function ( option ) {
     return option.utterances[0]
   })
