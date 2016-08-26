@@ -17,6 +17,10 @@ To get started with the included sample project, you'll need to setup a few pre
 Set these up with these step-by-step instructions:
 
 1. Create or login to an AWS account. In the AWS Console:
+  1. Switch to the "N. Virginia" region, since Alexa Skills are currently only supported in that region.
+  
+     ![switch_region](https://cloud.githubusercontent.com/assets/1970771/17977067/034c82c2-6aa5-11e6-96be-a87d9832e123.png "AWS Switch Region Screenshot") 
+  
   1. Create an AWS Role in IAM with access to Lambda and DynamoDB.
   
      ![create_role_1](https://cloud.githubusercontent.com/assets/7671574/17451098/09f64f40-5b19-11e6-82ee-b82c98387052.png "AWS Create Role Screenshot 1")
