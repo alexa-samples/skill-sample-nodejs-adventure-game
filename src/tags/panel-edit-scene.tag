@@ -237,6 +237,52 @@
 
     <br>
 
+    <div class="input-row">
+        <label for="$alternateConditions">
+            Set conditions for alternate card &amp; voice
+        </label>
+        <autogrow-textarea
+            id="$alternateConditions"
+            onblur={ parent.save }
+            value={ parent.scene.alternateConditions }></autogrow-textarea>
+    </div>
+
+    <br>
+
+    <a class="hotspot float-right"
+        onmouseenter={ parent.toggleNotice }
+        onmouseleave={ parent.toggleNotice }
+        data-target="#alternateConditionsNotice">
+        <i class="fa fa-info fa-lg"></i>
+    </a>
+    <div id="alternateConditionsNotice" class="notice text-center display-none">
+        <p>
+            <small>
+                Use the format <strong>FLAG_NAME=FLAG_VALUE</strong> with a new condition on each line. You may also use the
+                following key words to indicate conditions: <strong>AND, OR, NOT, GROUPSTART, GROUPEND</strong> E.g.
+                <br>
+                <br>
+                player.poisoned=0<br>
+                AND<br>
+                GROUPSTART<br>
+                inventory.redKey=1<br>
+                OR<br>
+                inventory.skeletonKey=1<br>
+                GROUPEND<br>
+                <br>
+                <br>
+                This will translate into the following logic code:<br>
+                if(session.attributes.flags['player.poisoned'] === "0" && (session.attributes.flags.['inventory.redKey'] === "1" || session.attributes.flags.['inventory.skeletonKey'])
+                <br>
+                <br>
+                This logic is applied before the user enters the scene. If the conditions are not met the reject Voice and Card will
+                be played to the user.
+            </small>
+        </p>
+    </div>
+
+    <br>
+
   </collapsible>
 
   <div class="tabs">
@@ -460,6 +506,89 @@
     </collapsible>
   </collapsible>
 
+    <collapsible title="Alternate Options" id="$collapsibleAlternateCard" show={ currentTab === 'card' }>
+
+        <div class="input-row">
+            <label for="$alternateTitle">
+                Title
+            </label>
+            <autogrow-textarea
+                id="$alternateTitle"
+                onblur={ parent.save }
+                value={ parent.scene.alternateCard.title }></autogrow-textarea>
+        </div>
+
+        <div class="input-row">
+            <label for="$alternateText">
+                Text
+            </label>
+            <autogrow-textarea
+                id="$alternateText"
+                onblur={ parent.save }
+                value={ parent.scene.alternateCard.text }></autogrow-textarea>
+        </div>
+
+        <div class="input-row">
+            <label for="$alternateCardPrompt">
+                Override Default Prompt
+                <small>(Optional)</small>
+            </label>
+            <autogrow-textarea
+                id="$alternateCardPrompt"
+                onblur={ parent.save }
+                value={ parent.scene.alternateCard.prompt }></autogrow-textarea>
+        </div>
+
+        <collapsible id="$collapsibleAlternateImage" title="Image">
+
+            <img if={ parent.parent.scene.alternateCard.image.smallImageUrl }
+                    src={ parent.parent.scene.alternateCard.image.smallImageUrl }
+                    alt="Small Card Image" />
+            <div class="input-row">
+                <label for="$inputAlternateSmallImageUrl">
+                    Small Image URL
+                    <small>(108&times;108)</small>
+                </label>
+                <input type="url"
+                    id="$inputAlternateSmallImageUrl"
+                    onblur={ parent.parent.save }
+                    value={ parent.parent.scene.alternateCard.image.smallImageUrl }>
+            </div>
+
+            <img if={ parent.parent.scene.alternateCard.image.largeImageUrl }
+                src={ parent.parent.scene.alternateCard.image.largeImageUrl }
+                alt="Large Card Image" />
+            <div class="input-row">
+                <label for="$inputAlternateLargeImageUrl">
+                    Large Image URL
+                    <small>(512&times;512)</small>
+                </label>
+                <input type="url"
+                    id="$inputAlternateLargeImageUrl"
+                    onblur={ parent.parent.save }
+                    value={ parent.parent.scene.alternateCard.image.largeImageUrl }>
+            </div>
+
+            <br>
+
+            <a class="hotspot float-right"
+                onmouseenter={ parent.parent.toggleNotice }
+                onmouseleave={ parent.parent.toggleNotice }
+                data-target="#alternateImageNotice">
+                <i class="fa fa-info fa-lg"></i>
+            </a>
+            <div id="alternateImageNotice" class="notice text-center display-none">
+                <p>
+                    <small>
+                        <strong>Note</strong>: All image URLs must be secure (HTTPS)
+                    </small>
+                </p>
+            </div>
+
+            <br>
+        </collapsible>
+    </collapsible>
+
   <div class="tab-content"
        show={ currentTab === 'voice' }>
 
@@ -544,8 +673,8 @@
         </label>
         <autogrow-textarea
           id="$rejectIntro"
-          onblur={ save }
-          value={ scene.rejectVoice.intro }></autogrow-textarea>
+          onblur={ parent.save }
+          value={ parent.scene.rejectVoice.intro }></autogrow-textarea>
       </div>
 
       <div class="input-row">
@@ -555,9 +684,35 @@
         </label>
         <autogrow-textarea
           id="$rejectVoicePrompt"
-          onblur={ save }
-          value={ scene.rejectVoice.prompt }></autogrow-textarea>
+          onblur={ parent.save }
+          value={ parent.scene.rejectVoice.prompt }></autogrow-textarea>
       </div>
+
+    </collapsible>
+
+    <br>
+
+    <collapsible title="Alternate Options" id="$collapsibleAlternateVoice" show={ currentTab === 'voice' }>
+        <div class="input-row">
+            <label for="$alternateIntro">
+                Speech
+            </label>
+            <autogrow-textarea
+                id="$alternateIntro"
+                onblur={ parent.save }
+                value={ parent.scene.alternateVoice.intro }></autogrow-textarea>
+        </div>
+
+        <div class="input-row">
+            <label for="$alternateVoicePrompt">
+                Override Default Prompt
+                <small>(Optional)</small>
+            </label>
+        <autogrow-textarea
+            id="$alternateVoicePrompt"
+            onblur={ parent.save }
+            value={ parent.scene.alternateVoice.prompt }></autogrow-textarea>
+        </div>
 
     </collapsible>
 
@@ -623,6 +778,7 @@
       this.scene.setSessionFlagsOnEnter = $advanced.$setSessionFlagsOnEnter.value || '';
       this.scene.setSessionFlagsOnExit  = $advanced.$setSessionFlagsOnExit.value || '';
       this.scene.entryConditions        = $advanced.$entryConditions.value || '';
+      this.scene.alternateConditions    = $advanced.$alternateConditions.value || '';
 
       this.scene.color                  = $colorSelection ? $colorSelection.value : 'default'
       this.scene.isHidden               = ( $advanced.$inputIsHiddenTrue.checked )
@@ -639,6 +795,13 @@
         intro: $rejectVoice.$rejectIntro.value.trim(),
         prompt: $rejectVoice.$rejectVoicePrompt.value.trim()
       }
+
+        var $alternateVoice = this.$collapsibleAlternateVoice._tag
+
+        this.scene.alternateVoice = {
+            intro: $alternateVoice.$alternateIntro.value.trim(),
+            prompt: $alternateVoice.$alternateVoicePrompt.value.trim()
+        }
 
       var $cardImage = this.$collapsibleCardImage._tag
       this.scene.card = {
@@ -662,6 +825,20 @@
           smallImageUrl: $inputRejectSmallImageUrl.value.trim() || null
         }
       }
+
+        var $alternateCard = this.$collapsibleAlternateCard._tag
+        var $alternateCardImage = $alternateCard.$collapsibleAlternateImage._tag
+        this.scene.alternateCard = {
+            title: $alternateCard.$alternateTitle.value.trim(),
+            text:  $alternateCard.$alternateText.value.trim(),
+            prompt: $alternateCard.$alternateCardPrompt.value.trim(),
+            image: {
+                largeImageUrl: $inputAlternateLargeImageUrl.value.trim() || null,
+                smallImageUrl: $inputAlternateSmallImageUrl.value.trim() || null
+            }
+        }
+
+    console.log(this);
 
       this.subtitle = this.scene.card.title
 

@@ -103,9 +103,18 @@ this.onClickAddOption = function (e) {
     setSessionFlagsOnEnter: '',
     setSessionFlagsOnExit: '',
     entryConditions: '',
+    alternateConditions: '',
     card: {
       title: 'Room',
       text: 'You enter a room.',
+      image: {
+        smallImageUrl: null,
+        largeImageUrl: null
+      }
+    },
+    alternateCard: {
+      title: '',
+      text: '',
       image: {
         smallImageUrl: null,
         largeImageUrl: null
@@ -121,6 +130,10 @@ this.onClickAddOption = function (e) {
     },
     voice: {
       intro: 'You enter a room. What would you like to do?',
+      prompt: ''
+    },
+    alternateVoice: {
+      intro: '',
       prompt: ''
     },
     rejectVoice: {

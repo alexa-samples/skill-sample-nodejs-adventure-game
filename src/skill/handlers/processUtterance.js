@@ -19,6 +19,7 @@ function processUtterance ( intent, session, request, response, utterance ) {
   })
 
   var currentScene = utils.findResponseBySceneId( session.attributes.currentSceneId )
+  var actualCurrentScene = utils.findResponseBySceneId( session.attributes.currentSceneId )
 
   if (!currentScene || !currentScene.options) {
     intentHandlers["LaunchIntent"](intent, session, request, response)
@@ -38,12 +39,26 @@ function processUtterance ( intent, session, request, response, utterance ) {
   // option found
   if ( option ) {
     var nextScene = utils.findNextScene( currentScene, option );
-    session.attributes.breadcrumbs.push( currentScene.id )
-    session.attributes.currentSceneId = nextScene.id
+    var actualNextScene = utils.findNextScene( actualCurrentScene, option );
+
 
     //set session flags on exit if the current scene specifies their values
-    if(currentScene.setSessionFlagsOnExit && currentScene.setSessionFlagsOnExit !== ''){
-      var flags = currentScene.setSessionFlagsOnExit.split("\n");
+    if(actualCurrentScene.setSessionFlagsOnExit && actualCurrentScene.setSessionFlagsOnExit !== ''){
+      var flags = actualCurrentScene.setSessionFlagsOnExit.split("\n");
+      flags.forEach(function(flag){
+        var flagArray = flag.split('=');
+        var flagKey = flagArray[0];
+        var flagValue = flagArray[1];
+
+        session.attributes.flags[flagKey] = flagValue;
+      });
+    }
+    console.log('Currentscene: ',currentScene);
+    console.log('Nextscene: ',nextScene);
+
+    //set session flags on enter if the next scene specifies their values
+    if(actualNextScene.setSessionFlagsOnEnter && actualNextScene.setSessionFlagsOnEnter !== ''){
+      var flags = actualNextScene.setSessionFlagsOnEnter.split("\n");
       flags.forEach(function(flag){
         var flagArray = flag.split('=');
         var flagKey = flagArray[0];
@@ -54,24 +69,25 @@ function processUtterance ( intent, session, request, response, utterance ) {
     }
 
     //check entry conditions for next scene to make sure user can actually enter
-    if(nextScene.entryConditions && nextScene.entryConditions !== ''){
+    if(actualNextScene.entryConditions && actualNextScene.entryConditions !== ''){
 
-      if(!utils.checkEntryConditionString(nextScene.entryConditions,session)){
-        respond.readSceneWithCard( utils.getRejectScene(nextScene), session, response );
+      if(!utils.checkConditionString(actualNextScene.entryConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(actualNextScene,'reject'), session, response );
+        return;
       }
     }
 
-    //set session flags on enter if the next scene specifies their values
-    if(nextScene.setSessionFlagsOnEnter && nextScene.setSessionFlagsOnEnter !== ''){
-      var flags = nextScene.setSessionFlagsOnEnter.split("\n");
-      flags.forEach(function(flag){
-        var flagArray = flag.split('=');
-        var flagKey = flagArray[0];
-        var flagValue = flagArray[1];
+    //check alternate conditions for next scene to see if alternate card and voice needs to be used instead
+    if(actualNextScene.alternateConditions && actualNextScene.alternateConditions !== ''){
 
-        session.attributes.flags[flagKey] = flagValue;
-      });
+      if(utils.checkConditionString(actualNextScene.alternateConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(actualNextScene,'alternate'), session, response );
+        return;
+      }
     }
+
+    session.attributes.breadcrumbs.push( currentScene.id )
+    session.attributes.currentSceneId = nextScene.id
 
     respond.readSceneWithCard( nextScene, session, response )
   }

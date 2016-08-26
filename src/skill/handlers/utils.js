@@ -5,7 +5,7 @@ var scenes = require('../models/scenes.json')
 
 var utils = {
 
-  checkEntryConditionString: function(inputString,session) {
+  checkConditionString: function(inputString,session) {
 
     var conditions = inputString.split("\n");
     var conditionString = '';
@@ -96,14 +96,33 @@ var utils = {
     return cloneScene(scene);
   },
 
-  getRejectScene: function( scene ) {
-    var rejectScene = scene;//utils.cloneScene(scene);
+  getModifiedScene: function( scene , type ) {
 
-    //set the card and voice to be the rejected one
-    rejectScene.card = rejectScene.rejectCard;
-    rejectScene.voice = rejectScene.rejectVoice;
+    var newScene = this.cloneScene(scene);
 
-    return rejectScene;
+    switch(type){
+      default:
+      case 'reject':
+          newScene.card = newScene.rejectCard;
+          newScene.voice = newScene.rejectVoice;
+          break;
+      case 'alternate':
+          newScene.card = newScene.alternateCard;
+          newScene.voice = newScene.alternateVoice;
+          break;
+    }
+
+    /*if(newScene.card.prompt === '' && scene.card.prompt !== ''){
+      newScene.card.prompt = scene.card.prompt;
+    }
+
+    if(newScene.voice.prompt === '' && scene.voice.prompt !== ''){
+      newScene.voice.prompt = scene.voice.prompt;
+    }*/
+
+    console.log('Modified scene: ',newScene);
+
+    return newScene;
   }
 
 }
