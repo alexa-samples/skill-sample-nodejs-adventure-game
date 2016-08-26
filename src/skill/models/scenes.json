@@ -4,9 +4,21 @@
     "color": "default",
     "isHidden": false,
     "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
     "card": {
       "title": "Welcome",
       "text": "Welcome to my Alexa Skill. To learn how to use this skill, say \"Help\".",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "",
+      "text": "",
       "prompt": "",
       "image": {
         "largeImageUrl": null,
@@ -17,6 +29,10 @@
       "intro": "Welcome to my Alexa Skill. To learn how to use this skill, say \"Help\".",
       "prompt": "When you are ready, say \"Begin\"."
     },
+    "rejectVoice": {
+      "intro": "",
+      "prompt": ""
+    },
     "options": [
       {
         "utterances": [
@@ -24,16 +40,42 @@
         ],
         "sceneId": 1
       }
-    ]
+    ],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
   },
   {
     "id": 1,
     "color": "default",
     "isHidden": false,
     "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
     "card": {
       "title": "Welcome",
-      "text": "You enter a room with three doors each with a distinct number on it. Which door would you like to open?",
+      "text": "You enter a room with three doors, each with a distinct number on it. Which door would you like to open?",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "",
+      "text": "",
       "prompt": "",
       "image": {
         "largeImageUrl": null,
@@ -42,6 +84,10 @@
     },
     "voice": {
       "intro": "You enter a room with three doors, each with a distinct number on it. Which door would you like to open?",
+      "prompt": ""
+    },
+    "rejectVoice": {
+      "intro": "",
       "prompt": ""
     },
     "options": [
@@ -69,13 +115,30 @@
         ],
         "sceneId": 5
       }
-    ]
+    ],
+    "alternateConditions": "inventory.redKey=1",
+    "alternateCard": {
+      "title": "Welcome",
+      "text": "You are in a room with three doors, each with a distinct number on it. Your red key glows as you turn to face door number two. Which door would you like to open?",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "You are in a room with three doors, each with a distinct number on it. Your red key glows as you turn to face door number two. Which door would you like to open?",
+      "prompt": ""
+    }
   },
   {
     "id": 2,
     "color": "red",
     "isHidden": false,
     "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
     "card": {
       "title": "You lose",
       "text": "Better luck next time.",
@@ -85,20 +148,9 @@
         "smallImageUrl": null
       }
     },
-    "voice": {
-      "intro": "You lose. Better luck next time.",
-      "prompt": "If you would like to play again say, \"start again.\" Otherwise you can say \"exit skill.\""
-    },
-    "options": []
-  },
-  {
-    "id": 3,
-    "color": "yellow",
-    "isHidden": false,
-    "readPreviousOptions": true,
-    "card": {
-      "title": "Locked Door",
-      "text": "This door is locked.",
+    "rejectCard": {
+      "title": "",
+      "text": "",
       "prompt": "",
       "image": {
         "largeImageUrl": null,
@@ -106,16 +158,94 @@
       }
     },
     "voice": {
-      "intro": "This door is locked. Maybe you should try one of the other doors.",
+      "intro": "You lose. Better luck next time.",
+      "prompt": "If you would like to play again say, \"start again.\" Otherwise you can say \"exit skill.\""
+    },
+    "rejectVoice": {
+      "intro": "",
       "prompt": ""
     },
-    "options": []
+    "options": [],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
+  },
+  {
+    "id": 3,
+    "color": "yellow",
+    "isHidden": false,
+    "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "inventory.redKey=1\nOR\ninventory.skeletonKey=1",
+    "card": {
+      "title": "Locked Door",
+      "text": "You unlock the door with the key.",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "Locked Door",
+      "text": "The door is locked. You need a Red Key.",
+      "prompt": "You can say \"Open Door One\", \"Open Door Two\" or \"Open Door  Three\".",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "voice": {
+      "intro": "You unlock the door with the key.",
+      "prompt": ""
+    },
+    "rejectVoice": {
+      "intro": "The door is locked. You need a Red Key.",
+      "prompt": "You can say \"Open Door One\", \"Open Door Two\" or \"Open Door  Three\"."
+    },
+    "options": [
+      {
+        "sceneId": 8,
+        "utterances": [
+          "open door 6"
+        ]
+      }
+    ],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
   },
   {
     "id": 4,
     "color": "green",
     "isHidden": false,
     "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
     "card": {
       "title": "You win",
       "text": "Congratulations, you've beat my skill!",
@@ -125,20 +255,9 @@
         "smallImageUrl": null
       }
     },
-    "voice": {
-      "intro": "Congratulations, you've beat my skill!",
-      "prompt": "If you would like to play again say, \"Start again.\" Otherwise you can say \"Exit skill.\""
-    },
-    "options": []
-  },
-  {
-    "id": 5,
-    "color": "default",
-    "isHidden": true,
-    "readPreviousOptions": false,
-    "card": {
-      "title": "Secret Room",
-      "text": "Congratulations, you've found a secret room. You look around and see a single door with a star on it.",
+    "rejectCard": {
+      "title": "",
+      "text": "",
       "prompt": "",
       "image": {
         "largeImageUrl": null,
@@ -146,7 +265,66 @@
       }
     },
     "voice": {
+      "intro": "Congratulations, you've beat my skill!",
+      "prompt": "If you would like to play again say, \"Start again.\" Otherwise you can say \"Exit skill.\""
+    },
+    "rejectVoice": {
+      "intro": "",
+      "prompt": ""
+    },
+    "options": [],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
+  },
+  {
+    "id": 5,
+    "color": "default",
+    "isHidden": true,
+    "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
+    "alternateConditions": "inventory.redKey=1",
+    "card": {
+      "title": "Secret Room",
+      "text": "Congratulations, you've found a secret room. You look around and see a single door with a star on it and a red key lying in the centre.",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "voice": {
+      "intro": "Congratulations, you've found a secret room. You look around and see a single door with a star on it and a red key lying in the centre.",
+      "prompt": ""
+    },
+    "alternateVoice": {
       "intro": "Congratulations, you've found a secret room. You look around and see a single door with a star on it.",
+      "prompt": "You can say \"Open door five\" or \"go back\"."
+    },
+    "rejectVoice": {
+      "intro": "",
       "prompt": ""
     },
     "options": [
@@ -155,8 +333,23 @@
         "utterances": [
           "open door 5"
         ]
+      },
+      {
+        "sceneId": 7,
+        "utterances": [
+          "take red key"
+        ]
       }
-    ]
+    ],
+    "alternateCard": {
+      "title": "Secret Room",
+      "text": "Congratulations, you've found a secret room. You look around and see a single door with a star on it.",
+      "prompt": "You can say \"Open door five\" or \"go back\".",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    }
   },
   {
     "id": 6,
@@ -164,6 +357,9 @@
     "isHidden": false,
     "generateOptions": true,
     "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
     "card": {
       "title": "Room",
       "text": "You win!",
@@ -173,10 +369,139 @@
         "smallImageUrl": null
       }
     },
+    "rejectCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
     "voice": {
       "intro": "You win!",
       "prompt": "If you would like to play again say, \"Start again.\" Otherwise you can say \"Exit skill.\""
     },
-    "options": []
+    "rejectVoice": {
+      "intro": "",
+      "prompt": ""
+    },
+    "options": [],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
+  },
+  {
+    "id": 7,
+    "color": "red",
+    "isHidden": false,
+    "generateOptions": true,
+    "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "inventory.redKey=1",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
+    "card": {
+      "title": "Red key",
+      "text": "You take the red key. It shines like a ruby.",
+      "prompt": "Say \"go back\" to proceed.",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "voice": {
+      "intro": "You take the red key. It shines like a ruby.",
+      "prompt": "Say \"go back\" to proceed."
+    },
+    "rejectVoice": {
+      "intro": "",
+      "prompt": ""
+    },
+    "options": [],
+    "alternateConditions": "inventory.redKey=1",
+    "alternateCard": {
+      "title": "Red key",
+      "text": "There is nothing there. You have already taken the red key.",
+      "prompt": "Say \"go back\" to proceed.",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "There is nothing there. You have already taken the red key.",
+      "prompt": "Say \"go back\" to proceed."
+    }
+  },
+  {
+    "id": 8,
+    "color": "default",
+    "isHidden": false,
+    "generateOptions": true,
+    "readPreviousOptions": false,
+    "setSessionFlagsOnEnter": "",
+    "setSessionFlagsOnExit": "",
+    "entryConditions": "",
+    "card": {
+      "title": "Room",
+      "text": "You enter a room filled with gold bars.",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "rejectCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "voice": {
+      "intro": "You enter a room filled with gold bars. What would you like to do?",
+      "prompt": ""
+    },
+    "rejectVoice": {
+      "intro": "",
+      "prompt": ""
+    },
+    "options": [],
+    "alternateConditions": "",
+    "alternateCard": {
+      "title": "",
+      "text": "",
+      "prompt": "",
+      "image": {
+        "largeImageUrl": null,
+        "smallImageUrl": null
+      }
+    },
+    "alternateVoice": {
+      "intro": "",
+      "prompt": ""
+    }
   }
 ]

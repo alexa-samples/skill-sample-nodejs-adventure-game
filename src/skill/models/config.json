@@ -1,6 +1,6 @@
 {
   "applicationId": null,
-  "awsProfileName": "",
+  "awsProfileName": "adventure-game",
   "skillName": "My Alexa Skill",
   "lambdaName": "MyAlexaSkillLambdaFunction",
   "dynamoTableName": "MyAlexaSkillTable",
@@ -8,6 +8,7 @@
   "commands": {
     "ResetStateIntent": [
       "reset skill",
+      "restart",
       "start again",
       "reset"
     ],

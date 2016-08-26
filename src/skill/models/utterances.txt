@@ -4,6 +4,7 @@ UnrecognizedIntent ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyN
 UnrecognizedIntent ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyNonSense
 UnrecognizedIntent ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyNonSense ThisIsPurposlyNonSense
 ResetStateIntent reset skill
+ResetStateIntent restart
 ResetStateIntent start again
 ResetStateIntent reset
 RestoreStateIntent resume skill
@@ -20,4 +21,6 @@ OpenDoorOneIntent open door one
 OpenDoorTwoIntent open door two
 OpenDoorThreeIntent open door three
 OpenDoorFourIntent open door four
+OpenDoorSixIntent open door six
 OpenDoorFiveIntent open door five
+TakeRedKeyIntent take red key
