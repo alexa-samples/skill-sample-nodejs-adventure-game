@@ -40,6 +40,7 @@
       data-target="#optionNotice">
      <i class="fa fa-info fa-lg"></i>
    </a>
+
    <div id="optionNotice" class="notice display-none">
      <p>
        <strong>Command Utterances</strong>:<br>

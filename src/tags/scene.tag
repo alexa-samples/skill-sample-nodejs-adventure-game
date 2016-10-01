@@ -117,6 +117,10 @@
         isHidden: false,
         generateOptions: true,
         readPreviousOptions: false,
+        setSessionFlagsOnEnter: '',
+        setSessionFlagsOnExit: '',
+        entryConditions: '',
+        alternateConditions: '',
         card: {
           title: 'Room',
           text: 'You enter a room.',
@@ -125,8 +129,32 @@
             largeImageUrl: null
           }
         },
+        alternateCard: {
+          title: '',
+          text: '',
+          image: {
+            smallImageUrl: null,
+            largeImageUrl: null
+          }
+        },
+        rejectCard: {
+          title: '',
+          text: '',
+          image: {
+            smallImageUrl: null,
+            largeImageUrl: null
+          }
+        },
         voice: {
           intro: 'You enter a room. What would you like to do?',
+          prompt: ''
+        },
+        alternateVoice: {
+          intro: '',
+          prompt: ''
+        },
+        rejectVoice: {
+          intro: '',
           prompt: ''
         },
         options: []

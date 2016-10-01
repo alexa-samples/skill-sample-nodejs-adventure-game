@@ -67,8 +67,11 @@ AlexaSkill.prototype.execute = function ( event, context ) {
             + this._appId)
         throw "Invalid applicationId"
     }
+
     if (!event.session.attributes) {
-        event.session.attributes = {}
+        event.session.attributes = {
+          flags: {}
+        }
     }
     if (event.session.new) {
         this.eventHandlers.onSessionStarted(event.request, event.session)

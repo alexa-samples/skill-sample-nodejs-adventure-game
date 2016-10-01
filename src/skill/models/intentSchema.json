@@ -43,7 +43,13 @@
       "intent": "OpenDoorFourIntent"
     },
     {
+      "intent": "OpenDoorSixIntent"
+    },
+    {
       "intent": "OpenDoorFiveIntent"
+    },
+    {
+      "intent": "TakeRedKeyIntent"
     }
   ]
 }

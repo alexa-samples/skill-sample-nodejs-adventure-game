@@ -40,7 +40,13 @@ module.exports = {
 	"OpenDoorFourIntent": function ( intent, session, request, response ) {
 		processUtterance( intent, session, request, response, "open door 4" )
 	},
+	"OpenDoorSixIntent": function ( intent, session, request, response ) {
+		processUtterance( intent, session, request, response, "open door 6" )
+	},
 	"OpenDoorFiveIntent": function ( intent, session, request, response ) {
 		processUtterance( intent, session, request, response, "open door 5" )
+	},
+	"TakeRedKeyIntent": function ( intent, session, request, response ) {
+		processUtterance( intent, session, request, response, "take red key" )
 	},
 }

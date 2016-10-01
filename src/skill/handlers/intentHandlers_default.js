@@ -7,9 +7,37 @@ var defaultIntentHandlers = {
 
   "LaunchIntent": function ( intent, session, request, response ) {
     session.attributes.breadcrumbs = []
+    session.attributes.flags = {}
     session.attributes.currentSceneId = utils.findFirstScene().id
     var scene = utils.findResponseBySceneId( session.attributes.currentSceneId )
-    respond.readSceneWithCard( scene, session, response )
+
+    var alreadyResponded = false;
+
+    //check alternate conditions for next scene to see if alternate card and voice needs to be used instead
+    if(scene.alternateConditions && scene.alternateConditions !== ''){
+
+      if(utils.checkConditionString(scene.alternateConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(scene,'alternate'), session, response );
+        alreadyResponded = true;
+      }
+    }
+
+    //set session flags on enter if the next scene specifies their values
+    if(scene.setSessionFlagsOnEnter && scene.setSessionFlagsOnEnter !== ''){
+      var flags = scene.setSessionFlagsOnEnter.split("\n");
+      flags.forEach(function(flag){
+        var flagArray = flag.split('=');
+        var flagKey = flagArray[0];
+        var flagValue = flagArray[1];
+
+        session.attributes.flags[flagKey] = flagValue;
+      });
+    }
+
+    if(!alreadyResponded){
+      respond.readSceneWithCard( scene, session, response )
+    }
+
   },
 
   "GoBackIntent": function ( intent, session, request, response ) {
@@ -20,6 +48,25 @@ var defaultIntentHandlers = {
       session.attributes.currentSceneId = session.attributes.breadcrumbs.pop()
     }
     var scene = utils.findResponseBySceneId( session.attributes.currentSceneId )
+
+    //check entry conditions for next scene to make sure user can actually enter
+    if(scene.entryConditions && scene.entryConditions !== ''){
+
+      if(!utils.checkConditionString(scene.entryConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(scene,'reject'), session, response );
+        return;
+      }
+    }
+
+    //check alternate conditions for next scene to see if alternate card and voice needs to be used instead
+    if(scene.alternateConditions && scene.alternateConditions !== ''){
+
+      if(utils.checkConditionString(scene.alternateConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(scene,'alternate'), session, response );
+        return;
+      }
+    }
+
     respond.readSceneWithCard( scene, session, response )
   },
 
@@ -37,6 +84,24 @@ var defaultIntentHandlers = {
         })
         previousScene.options.splice( index , 1 ) // remove current option
         scene.options = previousScene.options
+      }
+
+      //check entry conditions for next scene to make sure user can actually enter
+      if(scene.entryConditions && scene.entryConditions !== ''){
+
+        if(!utils.checkConditionString(scene.entryConditions,session)){
+          respond.readSceneWithCard( utils.getModifiedScene(scene,'reject'), session, response );
+          return;
+        }
+      }
+
+      //check alternate conditions for next scene to see if alternate card and voice needs to be used instead
+      if(scene.alternateConditions && scene.alternateConditions !== ''){
+
+        if(utils.checkConditionString(scene.alternateConditions,session)){
+          respond.readSceneWithCard( utils.getModifiedScene(scene,'alternate'), session, response );
+          return;
+        }
       }
     }
     respond.readSceneWithCard( scene, session, response )
@@ -73,9 +138,29 @@ var defaultIntentHandlers = {
 
   "ResetStateIntent": function ( intent, session, request, response ) {
     session.attributes.breadcrumbs = []
+    session.attributes.flags = {}
     delete session.attributes.isAskingToRestoreState
     session.attributes.currentSceneId = utils.findFirstScene().id
     var scene = utils.findResponseBySceneId( session.attributes.currentSceneId )
+
+    //check entry conditions for next scene to make sure user can actually enter
+    if(scene.entryConditions && scene.entryConditions !== ''){
+
+      if(!utils.checkConditionString(scene.entryConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(scene,'reject'), session, response );
+        return;
+      }
+    }
+
+    //check alternate conditions for next scene to see if alternate card and voice needs to be used instead
+    if(scene.alternateConditions && scene.alternateConditions !== ''){
+
+      if(utils.checkConditionString(scene.alternateConditions,session)){
+        respond.readSceneWithCard( utils.getModifiedScene(scene,'alternate'), session, response );
+        return;
+      }
+    }
+
     respond.readSceneWithCard( scene, session, response )
   },
 
