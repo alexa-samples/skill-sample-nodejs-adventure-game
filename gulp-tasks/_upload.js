@@ -9,7 +9,8 @@ gulp.task('upload', ['generate'], function ( cb ) {
   var config = JSON.parse(fs.readFileSync('./src/skill/models/config.json','utf8'))
 
   var opts = {
-    profile: config.awsProfileName
+    profile: config.awsProfileName,
+    region: config.dynamoRegion
   }
 
   return gulp.src('./src/skill/**/*.{js,json}', { base: "." })
