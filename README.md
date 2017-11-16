@@ -123,3 +123,31 @@ You'll need to complete the configuration manually by logging into the [Develope
 Click save, and the Skill should now be available on your developer account.  If your Alexa device is associated with the same Amazon account as your Developer Console account, then you can start using the skill immediately.  Or you can use it on the [online simulator](https://echosim.io) by logging in using the same account.
 
 Congrats!  Enjoy and let your imagination run wild, we can't wait to see what you come up with!
+
+Windows installation:
+
+Step 1 : Create a file in your home directory (usually your name) named .aws
+In order to do this on windows, simply crate a new folder with the name .aws.
+
+Step 2 : Create a file in that folder with the name credentials.file using notepad
+Inside include this code
+
+`[default]
+aws_access_key_id = [KEY FROM AWS]
+aws_secret_access_key = [SECRET KEY FROM AWS]`
+
+	Replacing those codes with the ones found in AWS console This you get by logging into 
+[IAM](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+
+step 3:  Install [node](https://nodejs.org/en/)
+step 4:Install [NPM](https://www.npmjs.com/)
+step 5 : Install [git](https://git-scm.com/downloads)
+
+Step 6: Run `git clone https://github.com/alexa/interactive-adventure-game-tool.git` in command prompt
+Step 7: CD to that drive it will be in C:\Users\NAME\interactive-adventure-game-tool replacing name with your home directory name
+
+so `CD C:\Users\name\interactive-adventure-game-tool` in command prompt.
+
+Step 8 : Type `npm install` and wait, it will take a while
+Step 9 : `Npm Start` and then allow, it should open.
+
