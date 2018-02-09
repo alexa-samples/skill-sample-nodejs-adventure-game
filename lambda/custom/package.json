@@ -1,0 +1,20 @@
+{
+  "name": "gamebook-sample-nodejs-skill",
+  "version": "1.0.0",
+  "description": "A text adventure skill.",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-sdk": "^1.0.23",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill"
+  ],
+  "author": "Amazon.com",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,34 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Play a text adventure game.",
+          "examplePhrases": [
+            "Alexa open text adventure",
+            "Alexa ask text adventure where am I?"
+          ],
+          "keywords": [
+            "game",
+            "adventure"
+          ],
+          "name": "Text Adventure",
+          "description": "In this game you navigate the rooms and avoid the perils to survive until the end.\n\nTo start, just say \"Alexa, launch Text Adventure\" or \"Alexa, open Text Adventure\" to start a game\".\n\nAt anytime, you can stop by saying \"Alexa, stop\"."
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": []
+  }
+}
