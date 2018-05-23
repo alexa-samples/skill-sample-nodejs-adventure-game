@@ -1,6 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
+      "invocationName": "text adventure",
       "intents": [{
           "name": "AMAZON.CancelIntent"
         },
@@ -146,8 +147,8 @@
               "value": "carry on"
             }
           }, {
+            "id": "desk",
             "name": {
-              "id": "desk",
               "value": "desk",
               "synonyms": ["table"]
             }
@@ -190,15 +191,13 @@
         {
           "name": "LIST_OF_NON_PLAYING_CHARACTERS",
           "values": [{
-            "id": null,
             "name": {
               "value": "spider",
               "synonyms": []
             }
           }]
         }
-      ],
-      "invocationName": "text adventure"
+      ]
     }
   }
 }
