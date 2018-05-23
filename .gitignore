@@ -51,3 +51,5 @@ node_modules/
 jspm_packages/
 bower_components/
 .tmp/
+
+lambda/custom/node_modules/
