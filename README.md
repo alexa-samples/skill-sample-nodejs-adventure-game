@@ -50,7 +50,7 @@ Alexa, start Text Adventure
 1. Clone the repository.
 
 	```bash
-	$ git clone https://github.com/alexa/skill-sample-gamebook/
+	$ git clone https://github.com/alexa/skill-sample-nodejs-adventure-game.git
 	```
 
 2. Initialize the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) by navigating into the repository and running npm command: `ask init`. Follow the prompts.
