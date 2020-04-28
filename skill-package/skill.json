@@ -22,11 +22,7 @@
       "distributionCountries": []
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom"
-        }
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0",
     "permissions": []
